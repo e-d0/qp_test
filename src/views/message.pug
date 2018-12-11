@@ -1,0 +1,8 @@
+if flash
+  - for (var i = 0; i < flash.messages.length; i++) {
+    div(class='alert alert-dismissible fade show ' + flash.type, role='alert')
+      strong #{flash.messages[i].msg}
+        |
+        button.close(type='button', data-dismiss='alert', aria-label='Close')
+          span(aria-hidden='true') ×
+  - }

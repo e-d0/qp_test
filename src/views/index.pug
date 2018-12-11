@@ -1,0 +1,61 @@
+extends layout.pug
+
+block content
+    .jumbotron.mt-5
+        .container#container
+            .row
+                .col-lg-4
+                    form#form.mt-3.mb-3
+                        h4 Войти в личный кабинет.
+                        .form-group
+                            label(for='email') Электронный адрес
+                            input#email.form-control(type='email', aria-describedby='emailHelp', placeholder='email')
+                        .form-group
+                            label(for='password') Пароль
+                            input#password.form-control(type='password', name='password', placeholder='Password')
+                        .form-group.text-center
+                            button#send.btn.mb-3.btn-primary(type='submit') Войти
+                            a.btn.ml-3.mb-3.btn-primary(href='/register') Зарегистрироваться
+                .col-lg-8
+                    h1.display-5.mb-4.mt-2.sol-sm-12 Полный список пользователей
+                    .container.products-view-all
+                        form#filter-form.post-list
+                            .form-group.row.mt-2.mb-4
+                                label.col-sm-2.col-form-label Filter:
+                                .col-sm-10.row
+                                    input#filter-word.col-sm-6.form-control.post_search_text.m-b(type='text', placeholder='Enter a keyword')
+                                    label.col-sm-1 IN:
+                                    select#filter-field.col-sm-5.form-control.post_name.m-b
+                                        option(value='') none
+                                        option(value='name') name
+                                        option(value='email') email
+                                        option(value='password') password
+                                        option(value='age') age
+                            .form-group.row.mt-4.mb-2
+                                label.col-sm-2.col-form-label Order By:
+                                .col-sm-10.row
+                                    select#sort-field.col.form-control.post_name.m-b
+                                        option(value='name') name
+                                        option(value='email') email
+                                        option(value='password') password
+                                        option(value='age') age
+                                    select#sort-order.col.form-control.post_sort.m-b
+                                        option(value='ASC') ASC
+                                        option(value='DESC') DESC
+                            .form-group.col-md-12.mt-2.mb-2.text-center
+                                input#filter-submit.btn.btn-primary.post_search_submit.m-b(type='submit', value='Отфильтровать')
+                        hr
+                        #table
+                            table.table.table-striped
+                                tr
+                                    th name
+                                    th email
+                                    th password
+                                    th age
+
+                        .clearfix
+                            .pagination-container.clearfix
+                            .pagination-nav
+block append body
+    script
+        include index.js
